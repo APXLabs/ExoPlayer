@@ -34,9 +34,9 @@ import java.io.OutputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.Set;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -296,7 +296,7 @@ import javax.crypto.spec.SecretKeySpec;
 
       if (encrypt) {
         byte[] initializationVector = new byte[16];
-        new Random().nextBytes(initializationVector);
+        new SecureRandom().nextBytes(initializationVector);
         output.write(initializationVector);
         IvParameterSpec ivParameterSpec = new IvParameterSpec(initializationVector);
         try {
